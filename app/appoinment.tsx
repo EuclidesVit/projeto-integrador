@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, View, TouchableOpacity, TextInput, Alert, Platform } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import { Image, StyleSheet, View, TouchableOpacity, TextInput, Alert, Platform, Text } from 'react-native';
+import RNDateTimePicker from '@react-native-community/datetimepicker';
 import { useRouter } from 'expo-router';
 
 import { Timer } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { addAppointment } from '@/scripts/utils';
+import { Appointment, addAppointment } from '@/scripts/utils';
 
 export default function HomeScreen() {
   const [appointment, setAppointment] = useState('');
@@ -17,10 +17,10 @@ export default function HomeScreen() {
 
   const handleSchedule = () => {
     if (appointment && date) {
-      const newAppointment = { appointment, date: date.toISOString() };
+      const newAppointment: Appointment = { appointment, date: date.toString(), status: "A fazer", points: 3 };
       addAppointment(newAppointment);
       Alert.alert('Agendamento realizado!', `\nTarefa: ${appointment}\nData: ${date.toLocaleString()}`);
-      router.push('/appointments');
+      router.push('/appoinments');
     } else {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
     }
@@ -30,10 +30,11 @@ export default function HomeScreen() {
     setShowDatePicker(true);
   };
 
-  const handleDateChange = (event: any, selectedDate: any) => {
-    const currentDate = selectedDate || date;
-    setShowDatePicker(Platform.OS === 'ios');
-    setDate(currentDate);
+  const handleDateChange = (event: any, selectedDate?: Date) => {
+    setShowDatePicker(false);
+    if (selectedDate) {
+      setDate(selectedDate);
+    }
   };
 
   return (
@@ -68,10 +69,11 @@ export default function HomeScreen() {
           />
         </TouchableOpacity>
         {showDatePicker && (
-          <DateTimePicker
+          <RNDateTimePicker
             value={date}
-            mode="datetime"
+            mode="date"
             display="default"
+            is24Hour={true}
             onChange={handleDateChange}
           />
         )}
