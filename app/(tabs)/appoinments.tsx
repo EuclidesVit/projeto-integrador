@@ -38,7 +38,7 @@ export default function AppointmentsScreen() {
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title">Agendamentos</ThemedText>
+      <ThemedText type="title" style={styles.title}>Agendamentos</ThemedText>
       <FlatList
         data={appointments}
         keyExtractor={(item, index) => index.toString()}
@@ -68,23 +68,45 @@ export default function AppointmentsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 24,
+    backgroundColor: '#f5f5f5'
   },
-  appointmentItem: {
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 16,
+    textAlign: 'center'
   },
+
+  appointmentItem:{
+    backgroundColor: '#fff',
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2
+  },
+
   appointmentText: {
     fontSize: 16,
+    marginBottom: 8
   },
+
   statusButtons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 8,
   },
+
   buttonText: {
-    color: '#4CAF50',
     fontSize: 14,
+    fontWeight: 'bold',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    color: '#32CD32'
   },
 });

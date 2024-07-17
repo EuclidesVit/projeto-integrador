@@ -40,8 +40,12 @@ export default function ExplorerScreen() {
 
   const ListHeaderComponent = () => (
     <ThemedView style={styles.titleContainer}>
-      <ThemedText type="title">Funcionalidades</ThemedText>
-      <Timer />
+      <View style={styles.titleRow}>
+        <ThemedText type="title"style={styles.titleText}>
+          Lista de Tarefas
+        </ThemedText>
+        <Timer></Timer>
+      </View>
     </ThemedView>
   );
 
@@ -60,29 +64,58 @@ export default function ExplorerScreen() {
 const styles = StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
-    padding: 16,
+    padding: 20,
+    borderRadius: 10,
+    marginBottom: 20,
+    backgroundColor: '#ddd'
   },
+
+  titleText: {
+    fontSize: 24,
+    color: '#FFF',
+    textShadowColor: 'rgba(0,0,0,0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
+    marginRight: 5
+  },
+
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+
   board: {
     flex: 1,
   },
+
   boardContent: {
     padding: 16,
   },
+
   column: {
     marginBottom: 16,
     padding: 16,
     backgroundColor: '#f0f0f0',
-    borderRadius: 5,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 2
   },
+
   taskCard: {
     padding: 16,
     marginVertical: 8,
-    backgroundColor: '#fff',
+    backgroundColor: '#fafafa',
     borderRadius: 5,
+    borderColor: '#ddd',
+    borderWidth: 1,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 2,
   },
+
 });

@@ -20,7 +20,7 @@ export default function HomeScreen() {
       const newAppointment: Appointment = { appointment, date: date.toString(), status: "A fazer", points: 3 };
       addAppointment(newAppointment);
       Alert.alert('Agendamento realizado!', `\nTarefa: ${appointment}\nData: ${date.toLocaleString()}`);
-      router.push('/appoinments');
+      router.push('/Agendamento');
     } else {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
     }
@@ -100,24 +100,39 @@ const styles = StyleSheet.create({
   formContainer: {
     gap: 8,
     marginBottom: 16,
-    padding: 16,
+    padding: 24,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.1,
+    elevation: 5,
+    shadowRadius: 5,
   },
   input: {
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 8,
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 12,
+    width: '100%'
   },
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#32CD32',
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
     marginTop: 8,
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.1,
+    elevation: 5,
+    shadowRadius: 5,
+    width: '100%'
   },
+
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 18,
   },
 });
